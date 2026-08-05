@@ -30,16 +30,14 @@ const theme = createTheme({
     deg: 132
   }
 });
-
 function App() {
   return (
     <Provider store={Store}>
       <MantineProvider theme={theme}>
         <ModalsProvider>
           <PrimeReactProvider>
-            <Notifications position='top-center' />
+            <Notifications position="top-center" />
             <AppRoutes />
-
           </PrimeReactProvider>
         </ModalsProvider>
       </MantineProvider>

@@ -39,6 +39,7 @@ public class AppointmentAPI {
 
     @PostMapping("/schedule")
     public ResponseEntity<Long> scheduleAppointment(@RequestBody AppointmentDTO appointmentDTO) throws HmsException {
+    	System.out.println("Received time: " + appointmentDTO.getAppointmentTime());
         return new ResponseEntity<>(appointmentService.scheduleAppointment(appointmentDTO), HttpStatus.CREATED);
     }
 
