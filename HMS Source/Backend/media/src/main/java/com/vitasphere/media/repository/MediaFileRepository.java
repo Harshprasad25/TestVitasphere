@@ -1,0 +1,9 @@
+package com.vitasphere.media.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.vitasphere.media.entity.MediaFile;
+
+public interface MediaFileRepository extends CrudRepository<MediaFile, Long> {
+
+}

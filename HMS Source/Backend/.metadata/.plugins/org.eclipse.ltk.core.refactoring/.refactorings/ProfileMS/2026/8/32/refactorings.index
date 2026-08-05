@@ -1,0 +1,11 @@
+1785971004121	Delete element
+1785971541077	Rename package 'com.hms.profile'
+1785971550209	Rename package 'com.hms.profile.api'
+1785971557398	Rename package 'com.hms.profile.config'
+1785971563032	Rename package 'com.hms.profile.dto'
+1785971569058	Rename package 'com.hms.profile.entity'
+1785971575351	Rename package 'com.hms.profile.exception'
+1785971580420	Rename package 'com.hms.profile.repository'
+1785971586013	Rename package 'com.hms.profile.service'
+1785971591175	Rename package 'com.hms.profile.utility'
+1785971623205	Rename package 'com.hms.profile'

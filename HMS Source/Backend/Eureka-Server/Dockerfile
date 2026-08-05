@@ -1,8 +1,9 @@
-FROM maven:3.8.5-openjdk-17 AS build
-COPY . .
-RUN mvn clean package -DskipTests
+FROM eclipse-temurin:17-jdk
 
-FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/Eureka-Server-0.0.1-SNAPSHOT.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
+WORKDIR /app
+
+COPY target/*.jar app.jar
+
+EXPOSE 8761
+
+ENTRYPOINT ["java", "-jar", "app.jar"]

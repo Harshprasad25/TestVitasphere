@@ -1,0 +1,42 @@
+package com.vitasphere.appointment.service;
+
+import java.util.List;
+
+import com.vitasphere.appointment.dto.AppointmentDTO;
+import com.vitasphere.appointment.dto.AppointmentDetails;
+import com.vitasphere.appointment.dto.MonthlyVisitDTO;
+import com.vitasphere.appointment.dto.ReasonCountDTO;
+import com.vitasphere.appointment.exception.HmsException;
+
+public interface AppointmentService {
+    Long scheduleAppointment(AppointmentDTO appointmentDTO) throws HmsException;
+
+    void cancelAppointment(Long appointmentId) throws HmsException;
+
+    void completeAppointment(Long appointmentId);
+
+    void rescheduleAppointment(Long appointmentId, String newDateTime);
+
+    AppointmentDTO getAppointmentDetails(Long appointmentId) throws HmsException;
+
+    AppointmentDetails getAppointmentDetailsWithName(Long appointmentId) throws HmsException;
+
+    List<AppointmentDetails> getAllAppointmentsByPatientId(Long patientId) throws HmsException;
+
+    List<AppointmentDetails> getAllAppointmentsByDoctorId(Long doctorId) throws HmsException;
+
+    List<MonthlyVisitDTO> getAppointmentCountByPatient(Long patientId) throws HmsException;
+
+    List<MonthlyVisitDTO> getAppointmentCountByDoctor(Long doctorId) throws HmsException;
+
+    List<MonthlyVisitDTO> getAppointmentCounts() throws HmsException;
+
+    List<ReasonCountDTO> getReasonCountByPatient(Long patientId);
+
+    List<ReasonCountDTO> getReasonCountByDoctor(Long doctorId);
+
+    List<ReasonCountDTO> getReasonCount();
+
+    List<AppointmentDetails> getTodaysAppointments();
+
+}

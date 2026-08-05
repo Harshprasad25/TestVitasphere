@@ -1,0 +1,13 @@
+1785970977358	Delete element
+1785971639858	Rename package 'com.hms.user'
+1785971645981	Rename package 'com.hms.user.api'
+1785971653372	Rename package 'com.hms.user.clients'
+1785971660018	Rename package 'com.hms.user.config'
+1785971665555	Rename package 'com.hms.user.dto'
+1785971671883	Rename package 'com.hms.user.entity'
+1785971678882	Rename package 'com.hms.user.exception'
+1785971684129	Rename package 'com.hms.user.jwt'
+1785971690141	Rename package 'com.hms.user.repository'
+1785971698450	Rename package 'com.hms.user.service'
+1785971703209	Rename package 'com.hms.user.utility'
+1785971714387	Rename package 'com.hms.user'
