@@ -1,0 +1,122 @@
+version: "3.9"
+
+services:
+
+  eureka:
+    image: eureka-server
+    container_name: eureka
+    restart: always
+    ports:
+      - "8761:8761"
+    networks:
+      - hms-network
+
+  gateway:
+    image: gatewayms
+    container_name: gateway
+    restart: always
+    ports:
+      - "9000:9000"
+    environment:
+      EUREKA_SERVER_URL: http://eureka:8761/eureka/
+    depends_on:
+      - eureka
+    networks:
+      - hms-network
+
+  userms:
+    image: userms
+    container_name: userms
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://host.docker.internal:3306/userdb
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      EUREKA_SERVER_URL: http://eureka:8761/eureka/
+      PROFILEMS_URL: http://profilems:9100
+    depends_on:
+      - eureka
+      - profilems
+    networks:
+      - hms-network
+
+  profilems:
+    image: profilems
+    container_name: profilems
+    restart: always
+    ports:
+      - "9100:9100"
+    environment:
+      DB_URL: jdbc:mysql://host.docker.internal:3306/profiledb
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      EUREKA_SERVER_URL: http://eureka:8761/eureka/
+    depends_on:
+      - eureka
+    networks:
+      - hms-network
+
+  appointmentms:
+    image: appointmentms
+    container_name: appointmentms
+    restart: always
+    ports:
+      - "9200:9200"
+    environment:
+      DB_URL: jdbc:mysql://host.docker.internal:3306/appointmentdb
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      EUREKA_SERVER_URL: http://eureka:8761/eureka/
+    depends_on:
+      - eureka
+    networks:
+      - hms-network
+
+  pharmacyms:
+    image: pharmacyms
+    container_name: pharmacyms
+    restart: always
+    ports:
+      - "9300:9300"
+    environment:
+      DB_URL: jdbc:mysql://host.docker.internal:3306/pharmacydb
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      EUREKA_SERVER_URL: http://eureka:8761/eureka/
+    depends_on:
+      - eureka
+    networks:
+      - hms-network
+
+  mediams:
+    image: mediams
+    container_name: mediams
+    restart: always
+    ports:
+      - "9400:9400"
+    environment:
+      DB_URL: jdbc:mysql://host.docker.internal:3306/mediadb
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      EUREKA_SERVER_URL: http://eureka:8761/eureka/
+    depends_on:
+      - eureka
+    networks:
+      - hms-network
+
+  frontend:
+    image: frontend
+    container_name: frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - gateway
+    networks:
+      - hms-network
+
+networks:
+  hms-network:
+    driver: bridge
